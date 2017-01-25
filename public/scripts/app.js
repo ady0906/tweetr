@@ -3,66 +3,93 @@
  * jQuery is already loaded
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
- function prettyDate(time){
-	var date = new Date((time || "").replace(/-/g,"/").replace(/[TZ]/g," ")),
-		diff = (((new Date()).getTime() - date.getTime()) / 1000),
-		day_diff = Math.floor(diff / 86400);
+ // var prettydate = require("pretty-date");
 
-	if ( isNaN(day_diff) || day_diff < 0 || day_diff >= 31 )
-		return;
+ function createTweetElement(tweetData) {
+    let $tweet = $("<article class='newTweet'>");
 
-	return day_diff == 0 && (
-			diff < 60 && "just now" ||
-			diff < 120 && "1 minute ago" ||
-			diff < 3600 && Math.floor( diff / 60 ) + " minutes ago" ||
-			diff < 7200 && "1 hour ago" ||
-			diff < 86400 && Math.floor( diff / 3600 ) + " hours ago") ||
-		day_diff == 1 && "Yesterday" ||
-		day_diff < 7 && day_diff + " days ago" ||
-		day_diff < 31 && Math.ceil( day_diff / 7 ) + " weeks ago";
-}
-if ( typeof jQuery != "undefined" )
-	jQuery.fn.prettyDate = function(){
-		return this.each(function(){
-			var date = prettyDate(this.title);
-			if ( date )
-				jQuery(this).text( date );
-		});
-	};
+    let $header = $("<header class='header-tweet'>").appendTo($tweet);
+
+    let $imgURL = $("<img>").attr("src", tweetData.user.avatars.small).appendTo($header);
+    let $author = $("<div class='author'>").text(tweetData.user.name).appendTo($header);
+    let $handle = $("<div class='handle'>").text(tweetData.user.handle).appendTo($header);
+
+    let $message = $("<div class='message'>").text(tweetData.content.text).appendTo($tweet);
+
+    let $time = $("<footer>").text(tweetData.created_at).appendTo($tweet);
+
+   return $tweet;
+  };
+
+  function renderTweets(tweets) {
+    tweets.forEach(function(tweet) {
+      createTweetElement(tweet).appendTo($("#tweetsContainer"));
+    });
+    // loops through tweets
+      // calls createTweetElement for each tweet
+      // takes return value and appends it to the tweets container
+  };
+
 
 
  $(document).ready(function() {
-   console.log('ready!');
- });
+   var data = [
+  {
+    "user": {
+      "name": "Newton",
+      "avatars": {
+        "small":   "https://vanillicon.com/788e533873e80d2002fa14e1412b4188_50.png",
+        "regular": "https://vanillicon.com/788e533873e80d2002fa14e1412b4188.png",
+        "large":   "https://vanillicon.com/788e533873e80d2002fa14e1412b4188_200.png"
+      },
+      "handle": "@SirIsaac"
+    },
+    "content": {
+      "text": "If I have seen further it is by standing on the shoulders of giants"
+    },
+    "created_at": 1461116232227
+  },
+  {
+    "user": {
+      "name": "Descartes",
+      "avatars": {
+        "small":   "https://vanillicon.com/7b89b0d8280b93e2ba68841436c0bebc_50.png",
+        "regular": "https://vanillicon.com/7b89b0d8280b93e2ba68841436c0bebc.png",
+        "large":   "https://vanillicon.com/7b89b0d8280b93e2ba68841436c0bebc_200.png"
+      },
+      "handle": "@rd" },
+    "content": {
+      "text": "Je pense , donc je suis"
+    },
+    "created_at": 1461113959088
+  },
+  {
+    "user": {
+      "name": "Johann von Goethe",
+      "avatars": {
+        "small":   "https://vanillicon.com/d55cf8e18b47d4baaf60c006a0de39e1_50.png",
+        "regular": "https://vanillicon.com/d55cf8e18b47d4baaf60c006a0de39e1.png",
+        "large":   "https://vanillicon.com/d55cf8e18b47d4baaf60c006a0de39e1_200.png"
+      },
+      "handle": "@johann49"
+    },
+    "content": {
+      "text": "Es ist nichts schrecklicher als eine tätige Unwissenheit."
+    },
+    "created_at": 1461113796368
+  }
+];
+
+  // var $tweet = createTweetElement(tweetData);
+
+   renderTweets(data);
+
+});
 
  // Test / driver code (temporary). Eventually will get this from the server.
- var tweetData = {
-   "user": {
-     "name": "Newton",
-     "avatars": {
-       "small":   "https://vanillicon.com/788e533873e80d2002fa14e1412b4188_50.png",
-       "regular": "https://vanillicon.com/788e533873e80d2002fa14e1412b4188.png",
-       "large":   "https://vanillicon.com/788e533873e80d2002fa14e1412b4188_200.png"
-     },
-     "handle": "@SirIsaac"
-   },
-   "content": {
-     "text": "If I have seen further it is by standing on the shoulders of giants"
-   },
-   "created_at": 1461116232227
- }
 
- var $tweet = createTweetElement(tweetData);
 
-createTweetElement(tweetData) {
- let imgURL = tweetData.users.avatars.small;
- let author = tweetData.users.name;
- let handle = tweetData.user.handle;
- let message = tweetData.content.text;
- let time = prettyDate(tweetData.created_at);
-}
- // Test / driver code (temporary)
- console.log($tweet); // to see what it looks like
+
 
 
 
