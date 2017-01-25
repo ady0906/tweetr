@@ -15,6 +15,7 @@ nav {
   padding-left: 10px;
   line-height: 80px;
   position: fixed;
+  z-index: 6;
 }
 
 .logo {
