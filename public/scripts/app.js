@@ -12,7 +12,7 @@
     let $author = $("<div class='author'>").text(tweetData.user.name).appendTo($header);
     let $handle = $("<div class='handle'>").text(tweetData.user.handle).appendTo($header);
     let $message = $("<div class='message'>").text(tweetData.content.text).appendTo($tweet);
-    let $time = $("<footer>").text(tweetData.created_at).appendTo($tweet);
+    let $time = $("<footer>").text(new Date(tweetData.created_at)).appendTo($tweet);
     let $hoverIcons = $("<div class='hoverIcons'>").html("<i class='fa fa-flag' aria-hidden='true'></i>&nbsp;&nbsp;<i class='fa fa-retweet' aria-hidden='true'></i>&nbsp;&nbsp;<i class='fa fa-heart' aria-hidden='true'></i>").appendTo($time);
 
    return $tweet;
