@@ -104,10 +104,12 @@ img {
 .hoverIcons {
   float: right;
   color: #00a087;
+  visibility: hidden;
 }
 
 .hover {
   opacity: 1;
+  font: green;
 }
 
 
