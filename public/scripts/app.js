@@ -84,6 +84,13 @@
 
    renderTweets(data);
 
+   $(function() {
+     var $button = $('#sendTweet');
+     $button.on('click', function () {
+       
+     })
+   })
+
 });
 
  // Test / driver code (temporary). Eventually will get this from the server.
