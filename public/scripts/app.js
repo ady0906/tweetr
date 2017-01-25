@@ -56,6 +56,7 @@
        data: $(this).serialize(),
        success: loadTweets
      });
+     $('#writeTweet').val('');
    });
 
    $(".composeButton").on("click", function() {
