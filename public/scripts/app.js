@@ -58,12 +58,18 @@
      });
    });
 
-   $(".newTweet").hover(function() {
-      $(this).addClass("hover");
-    }, function() {
-      $(this).removeClass("hover");
-    }
-  )
+   $(".composeButton").on("click", function() {
+     $(".new-tweet").slideToggle(400, function () {
+       $("#writeTweet").focus();
+     })
+ });
+
+  //  $(".newTweet").hover(function() {
+  //     $(this).addClass("hover");
+  //   }, function() {
+  //     $(this).removeClass("hover");
+  //   }
+  // )
 
 });
 

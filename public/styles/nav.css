@@ -24,3 +24,28 @@ nav {
   display: inline-block;
   float: left;
 }
+
+.composeButton {
+  float: right;
+  border-radius: 7px;
+  text-align: center;
+  width: 162px;
+  font-size: 84%;
+  height: 54px;
+  margin-top: 14px;
+  border-color: black;
+  background-color: #eee;
+  color: #00a087;
+  display: inline-block;
+  line-height: 1px;
+  transition-duration: 0.4s;
+}
+
+.composeButton:hover {
+  color: black;
+  background-color: white;
+}
+
+.hidden {
+       display:none;
+    }
