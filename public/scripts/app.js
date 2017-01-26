@@ -46,7 +46,6 @@
 
    loadTweets();
 
-// why is the default behavior not prevented when the function is underneath
 
     $("form").on("submit", function (event) {
      event.preventDefault();
@@ -90,6 +89,3 @@
   // )
 
 });
-
-
-  // var $tweet = createTweetElement(tweetData);
