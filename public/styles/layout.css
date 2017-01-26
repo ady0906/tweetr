@@ -101,12 +101,6 @@ img {
   margin-left: 1em;
 }
 
-.composeButton {
-  float: right;
-  border-radius: 5px;
-  text-align: center;
-}
-
 .hoverIcons {
   float: right;
   color: #00a087;
