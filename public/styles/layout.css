@@ -111,6 +111,6 @@ img {
   opacity: 1;
 }
 
-.newTweet:hover .hoverIcons{
+.newTweet:hover .hoverIcons {
   visibility: visible;
 }
