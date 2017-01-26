@@ -50,6 +50,7 @@
 
     $("form").on("submit", function (event) {
      event.preventDefault();
+    //  let content = 
      $.ajax({
        url: '/tweets',
        method: 'POST',
