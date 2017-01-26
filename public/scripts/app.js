@@ -50,7 +50,7 @@
 
     $("form").on("submit", function (event) {
      event.preventDefault();
-    //  let content = 
+    //  let content =
      $.ajax({
        url: '/tweets',
        method: 'POST',
@@ -58,6 +58,7 @@
        success: loadTweets
      });
      $('#writeTweet').val('');
+     $('.counter').text('140');
    });
 
    $(".composeButton").on("click", function() {
@@ -77,17 +78,3 @@
 
 
   // var $tweet = createTweetElement(tweetData);
-
-
-
-
-
- // Test / driver code (temporary). Eventually will get this from the server.
-
-
-
-
-
-
-
- // $('#tweets-container').append($tweet); to add it to the page so we can make sure it's got all the right elements, classes, etc.
