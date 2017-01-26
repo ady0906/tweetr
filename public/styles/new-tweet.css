@@ -18,3 +18,16 @@ textarea {
 .counter {
   float: right;
 }
+
+.flash-message {
+  color: red;
+  text-align: center;
+  border-color: red;
+  border-style: solid;
+  padding: 1em;
+  border-width: thin;
+  background-color: papayawhip;
+  border-radius: 6px;
+  margin-left: 65px;
+  margin-right: 65px;
+}

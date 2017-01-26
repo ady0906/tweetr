@@ -50,16 +50,31 @@
 
     $("form").on("submit", function (event) {
      event.preventDefault();
-    //  let content =
-     $.ajax({
-       url: '/tweets',
-       method: 'POST',
-       data: $(this).serialize(),
-       success: loadTweets
+     if ($('#writeTweet').val().length > 140) {
+       $('#over140').slideDown(function() {
+         setTimeout(function() {
+           $('#over140').slideUp();
+         }, 2000);
+       });
+       return;
+     } else if ($('#writeTweet').val() == "" || $('#writeTweet').val() == null) {
+       $('#absentTweet').slideDown(function() {
+         setTimeout(function() {
+           $('#absentTweet').slideUp();
+         }, 2000);
+       });
+       return;
+     } else {
+       $.ajax({
+         url: '/tweets',
+         method: 'POST',
+         data: $(this).serialize(),
+         success: loadTweets
+       });
+       $('#writeTweet').val('');
+       $('.counter').text('140');
+      }
      });
-     $('#writeTweet').val('');
-     $('.counter').text('140');
-   });
 
    $(".composeButton").on("click", function() {
      $(".new-tweet").slideToggle(400, function () {
