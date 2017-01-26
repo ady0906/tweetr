@@ -8,9 +8,7 @@ const tweetsRoutes  = express.Router();
 module.exports = function(DataHelpers) {
 
   tweetsRoutes.get("/", function(req, res) {
-    console.log("In /tweets")
     DataHelpers.getTweets((tweets, err) => {
-      console.log("in DataHelpers.getTweets");
       if (err) {
         res.status(500).json({ error: err.message });
       } else {
@@ -44,5 +42,4 @@ module.exports = function(DataHelpers) {
   });
 
   return tweetsRoutes;
-
 }
