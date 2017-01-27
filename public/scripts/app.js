@@ -5,6 +5,30 @@
  */
  // var prettydate = require("pretty-date");
 
+ function timeDifference(current, previous) {
+
+     var msPer2Minutes = 120 * 1000;
+     var msPerHour = msPerMinute * 60;
+     var msPerDay = msPerHour * 24;
+     var msPerMonth = msPerDay * 30;
+     var msPerYear = msPerDay * 365;
+     var elapsed = current - previous;
+
+     if (elapsed < msPer2Minutes) {
+          return 'Just now';
+     } else if (elapsed < msPerHour) {
+          return Math.round(elapsed/msPerMinute) + ' minutes ago';
+     } else if (elapsed < msPerDay ) {
+          return Math.round(elapsed/msPerHour ) + ' hours ago';
+     } else if (elapsed < msPerMonth) {
+         return Math.round(elapsed/msPerDay) + ' days ago';
+     } else if (elapsed < msPerYear) {
+         return Math.round(elapsed/msPerMonth) + ' months ago';
+     } else {
+         return Math.round(elapsed/msPerYear ) + ' years ago';
+     }
+ }
+
  function createTweetElement(tweetData) {
     let $tweet = $("<article class='newTweet'>");
     let $header = $("<header class='header-tweet'>").appendTo($tweet);
@@ -12,7 +36,7 @@
     let $author = $("<div class='author'>").text(tweetData.user.name).appendTo($header);
     let $handle = $("<div class='handle'>").text(tweetData.user.handle).appendTo($header);
     let $message = $("<div class='message'>").text(tweetData.content.text).appendTo($tweet);
-    let $time = $("<footer>").text(new Date(tweetData.created_at)).appendTo($tweet);
+    let $time = $("<footer>").text(timeDifference(Date.now(),tweetData.created_at)).appendTo($tweet);
     let $hoverIcons = $("<div class='hoverIcons'>").html("<i class='fa fa-flag' aria-hidden='true'></i>&nbsp;&nbsp;<i class='fa fa-retweet' aria-hidden='true'></i>&nbsp;&nbsp;<i class='fa fa-heart' aria-hidden='true'></i>").appendTo($time);
 
    return $tweet;
