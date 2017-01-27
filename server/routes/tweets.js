@@ -7,6 +7,8 @@ const tweetsRoutes  = express.Router();
 
 module.exports = function(DataHelpers) {
 
+// getting tweets from db with DataHelpers intermediary
+
   tweetsRoutes.get("/", function(req, res) {
     DataHelpers.getTweets((tweets, err) => {
       if (err) {
@@ -16,6 +18,8 @@ module.exports = function(DataHelpers) {
       }
     });
   });
+
+// posting tweets using randomly generated user info
 
   tweetsRoutes.post("/", function(req, res) {
     if (!req.body.text) {
@@ -31,6 +35,8 @@ module.exports = function(DataHelpers) {
       },
       created_at: Date.now()
     };
+
+// saving the tweet on the database using the DataHelpers intermediary
 
     DataHelpers.saveTweet(tweet, (err) => {
       if (err) {

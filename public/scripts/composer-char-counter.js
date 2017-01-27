@@ -1,4 +1,6 @@
 
+// display the number of remaining characters allowed in a tweet
+
 $(document).ready(function() {
   console.log('ready!');
   $("textarea").on('input', function() {

@@ -3,7 +3,9 @@
  * jQuery is already loaded
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
- // var prettydate = require("pretty-date");
+
+
+// function to format the date in proper twitter fashion
 
  function timeDifference(current, previous) {
 
@@ -29,6 +31,8 @@
      }
  }
 
+// function to render the tweets into properly styled HTML articles
+
  function createTweetElement(tweetData) {
     let $tweet = $("<article class='newTweet'>");
     let $header = $("<header class='header-tweet'>").appendTo($tweet);
@@ -50,11 +54,13 @@
     // loops through tweets
       // calls createTweetElement for each tweet
       // takes return value and appends it to the tweets container
-  };
+};
 
 
 
  $(document).ready(function() {
+
+// load tweets through ajax
 
    function loadTweets() {
      $.ajax({
@@ -70,6 +76,8 @@
 
    loadTweets();
 
+// submit tweet to ajax if certain conditions are met
+// print flash messages if they are not
 
     $("form").on("submit", function (event) {
      event.preventDefault();
@@ -103,13 +111,5 @@
      $(".new-tweet").slideToggle(400, function () {
        $("#writeTweet").focus();
      })
- });
-
-  //  $(".newTweet").hover(function() {
-  //     $(this).addClass("hover");
-  //   }, function() {
-  //     $(this).removeClass("hover");
-  //   }
-  // )
-
+   });
 });

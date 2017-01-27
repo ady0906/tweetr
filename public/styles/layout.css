@@ -85,13 +85,6 @@ img {
   border-bottom-right-radius: 0;
 }
 
-.author {
-  font-size: 150%;
-  font-weight: bold;
-  padding-left: 10px;
-  margin-left: 2.4em;
-}
-
 .message {
   padding: 35px 10px 35px 2px;
   margin-left: 1em;
