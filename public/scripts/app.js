@@ -8,7 +8,7 @@
  function timeDifference(current, previous) {
 
      var msPer2Minutes = 120 * 1000;
-     var msPerHour = msPerMinute * 60;
+     var msPerHour = msPer2Minutes * 30;
      var msPerDay = msPerHour * 24;
      var msPerMonth = msPerDay * 30;
      var msPerYear = msPerDay * 365;
@@ -17,7 +17,7 @@
      if (elapsed < msPer2Minutes) {
           return 'Just now';
      } else if (elapsed < msPerHour) {
-          return Math.round(elapsed/msPerMinute) + ' minutes ago';
+          return Math.round(elapsed/msPer2Minutes) + ' minutes ago';
      } else if (elapsed < msPerDay ) {
           return Math.round(elapsed/msPerHour ) + ' hours ago';
      } else if (elapsed < msPerMonth) {
