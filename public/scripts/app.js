@@ -16,20 +16,22 @@
      var msPerYear = msPerDay * 365;
      var elapsed = current - previous;
 
-     if (elapsed < msPer2Minutes) {
-          return 'Just now';
-     } else if (elapsed < msPerHour) {
-          return Math.round(elapsed/msPer2Minutes) + ' minutes ago';
-     } else if (elapsed < msPerDay ) {
-          return Math.round(elapsed/msPerHour ) + ' hours ago';
-     } else if (elapsed < msPerMonth) {
-         return Math.round(elapsed/msPerDay) + ' days ago';
-     } else if (elapsed < msPerYear) {
-         return Math.round(elapsed/msPerMonth) + ' months ago';
-     } else {
-         return Math.round(elapsed/msPerYear ) + ' years ago';
-     }
- }
+  if (elapsed < msPer2Minutes) {
+    return 'Just now';
+  } else if (elapsed < msPerHour) {
+    return Math.round(elapsed/msPer2Minutes) + ' minutes ago';
+  } else if (elapsed < msPerDay ) {
+    return Math.round(elapsed/msPerHour ) + ' hours ago';
+  } else if (elapsed < 2*msPerDay) {
+    return Math.round(elapsed/msPerDay) + ' day ago';
+  } else if (elapsed < msPerMonth) {
+   return Math.round(elapsed/msPerDay) + ' days ago';
+  } else if (elapsed < msPerYear) {
+   return Math.round(elapsed/msPerMonth) + ' months ago';
+  } else {
+   return Math.round(elapsed/msPerYear ) + ' years ago';
+  }
+}
 
 // function to render the tweets into properly styled HTML articles
 
