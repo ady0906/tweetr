@@ -38,7 +38,7 @@ module.exports = function(DataHelpers) {
 
 // saving the tweet on the database using the DataHelpers intermediary
 
-    DataHelpers.saveTweet(tweet, (err) => {
+      DataHelpers.saveTweet(tweet, (err) => {
       if (err) {
         res.status(500).json({ error: err.message });
       } else {
