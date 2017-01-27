@@ -31,6 +31,9 @@
     <nav id="nav-bar">
       <img class="logo" src="/images/bird.png">
       <span class="header">Tweeter</span>
+      <button class="signinButton">
+        <i class="fa fa-sign-in" aria-hidden="true"></i>&nbsp;Sign in
+      </button>
       <button class="composeButton">
         <i class="fa fa-pencil-square-o" aria-hidden="true"></i>&nbsp;Compose
       </button>
@@ -39,6 +42,15 @@
 
     <!-- Page-specific (main) content here -->
     <main class="container">
+      <form action="/tweets/login" method="POST" id="loginform" class="hidden">
+        <label for="email">Email:&nbsp;&nbsp;&nbsp;&nbsp;</label>
+            <input id="email" type="email" name="email" style="width: 300px; margin-left: 26px">
+            <br><br>
+            <label for="password">Password:&nbsp;&nbsp;&nbsp;&nbsp;</label>
+            <input id="password" type="password" name="password" style="width: 300px">
+            <input type="submit" value="Login" style="margin-left: 8px; border-radius: 4px; background-color: #eee; border-style: solid;">
+            <br><br>
+      </form>
         <section class="new-tweet hidden">
           <h2>Compose Tweet</h2>
             <form action = "/tweets" method = "POST">

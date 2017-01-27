@@ -12,7 +12,7 @@ module.exports = function makeDataHelpers(db) {
   const tweets = db.collection('tweets');
 
   return {
-    
+
     // Saves a tweet to `db`
     saveTweet: function(newTweet, callback) {
       tweets
@@ -30,6 +30,18 @@ module.exports = function makeDataHelpers(db) {
         const sortNewestFirst = (a, b) => a.created_at - b.created_at;
         callback(results.sort(sortNewestFirst));
       });
+    }
+
+    getUsers: function(callback) {
+      users
+        .find({})
+        .toArray((err, results) => {
+          if (err) {
+            return res.status.(500).json(err);
+          }
+          const sortEmails = (a, b) => a.email - b.emails;
+          callback(results.sort(sortEmails));
+        })
     }
   };
 }

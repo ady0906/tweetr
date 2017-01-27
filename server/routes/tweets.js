@@ -39,6 +39,17 @@ module.exports = function(DataHelpers) {
         res.status(200).send();
       }
     });
+
+    DataHelpers.getUsers((users, err) => {
+      if (err) {
+        res.status(500).json({ error: err.message });
+      } else {
+        res.json(users);
+      }
+    }
+  })
+
+
   });
 
   return tweetsRoutes;

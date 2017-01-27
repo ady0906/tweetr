@@ -62,7 +62,6 @@
        method: 'GET',
        dataType: 'json',
        success: function(response) {
-         console.log('Success!');
        renderTweets(response.reverse());
        }
      })
@@ -105,11 +104,16 @@
      })
  });
 
-  //  $(".newTweet").hover(function() {
-  //     $(this).addClass("hover");
-  //   }, function() {
-  //     $(this).removeClass("hover");
-  //   }
-  // )
+ $(".signinButton").on("click", function() {
+   $("#loginform").slideToggle(400, function () {
+     $("#email").focus();
+   })
+ });
+
+ $("#loginform").on("submit", function (event) {
+   $.ajax({
+     // use ajax to work with the user database
+   })
+ })
 
 });

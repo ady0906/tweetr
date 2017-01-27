@@ -41,6 +41,26 @@ nav {
   transition-duration: 0.4s;
 }
 
+.signinButton {
+  border-radius: 7px;
+  text-align: center;
+  width: 122px;
+  font-size: 76%;
+  height: 54px;
+  margin-top: 14px;
+  border-color: black;
+  background-color: #eee;
+  color: #00a087;
+  display: inline-block;
+  line-height: 1px;
+  transition-duration: 0.4s;
+}
+
+.signinButton:hover {
+  color: black;
+  background-color: white;
+}
+
 .composeButton:hover {
   color: black;
   background-color: white;
